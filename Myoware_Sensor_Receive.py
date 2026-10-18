@@ -10,31 +10,6 @@ PICO_IP = "172.20.10.11"
 TX_PORT = 5006
 RX_PORT = 5005
 
-def plot_spectrum(Xv, fs, doStem=False):
-	"""Plot magnitude and phase of the spectrum"""
-
-	N = len(Xv)
-	ff = np.arange(-N/2, N/2, 1) * fs/N
-
-	fig, (axm, axp) = plt.subplots(2, 1, layout='constrained')
-	
-	if doStem:
-		axm.stem(ff, np.abs(Xv))
-	else:
-		axm.semilogy(ff, np.abs(Xv))
-	axm.grid()
-	axm.set_ylabel('Magnitude')
-
-	if doStem:
-		axp.stem(ff, np.angle(Xv)/np.pi)
-	else:
-		axp.plot(ff, np.angle(Xv)/np.pi)
-	axp.set_xlabel('Frequency (Hz)')
-	axp.set_ylabel('Phase (rad/pi)')
-	axp.grid()
-
-	plt.show()
-
 # initialize UDP
 tx_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 rx_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
