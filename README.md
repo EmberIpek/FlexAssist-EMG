@@ -8,6 +8,12 @@
 
 This device uses a MyoWear 2.0 EMG device to send analog data through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using rubber bands attached to a glove when the muscle is contracted.
 
+### Circuit Diagram
+
+<img width="975" height="673" alt="image" src="https://github.com/user-attachments/assets/3aa404a8-60b1-485a-8cfb-6ba70923affb" />
+
+Available at: [https://www.circuitlab.com/editor/#?id=nvnkb6n5dq7z]
+
 #### Dependencies & Credits - This project utilizes the following open-source libraries: 
 
 **ADS1256 Driver**: Written by [robert-hh](https://github.com/robert-hh/ADS1256-ADS1255).
