@@ -6,7 +6,7 @@
 
 [![Watch the video](https://img.youtube.com/vi/SXFi_Bxvxfk/hqdefault.jpg)](https://www.youtube.com/watch?v=SXFi_Bxvxfk)
 
-This device uses a MyoWear 2.0 EMG device to send analog data through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using fishing line when the muscle is contracted.
+This device uses a MyoWear 2.0 EMG device to send analog data through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using rubber bands attached to a glove when the muscle is contracted.
 
 #### Dependencies & Credits - This project utilizes the following open-source libraries: 
 
