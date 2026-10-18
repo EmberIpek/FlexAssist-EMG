@@ -1,3 +1,9 @@
+# Author: Ember Ipek
+# 10/17/2026
+#
+# Acquires data from MyoWear 2.0 EMG device through an ADC
+# and activates stepper motor based on reading
+
 import machine
 import utime
 import network
@@ -15,6 +21,11 @@ RX_PORT = 5006
 # dout = Machine.Pin(4, Pin.OUT, value=0)
 cs = machine.Pin(5, machine.Pin.OUT, value=1)
 drdy = machine.Pin(6, machine.Pin.IN)
+in1 = machine.Pin(13, machine.Pin.OUT, value=0)
+in2 = machine.Pin(12, machine.Pin.OUT, value=0)
+in3 = machine.Pin(11, machine.Pin.OUT, value=0)
+in4 = machine.Pin(10, machine.Pin.OUT, value=0)
+stop_button = machine.Pin(15, machine.Pin.IN)
 
 # setup UDP
 tx_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -27,7 +38,45 @@ wlan = udp.connect_wifi()
 # ads.channel(0, 0, 8, rate=15000)
 spi0 = machine.SPI(0, sck=2, mosi=3, miso=4, phase=1, polarity=0)
 adc = ADS1256(spi0, cs, drdy)
+motor_count = 0
 
+def setStep(w1, w2, w3, w4):
+    in1.value(w1)
+    in2.value(w2)
+    in3.value(w3)
+    in4.value(w4)
+    
+    return
+
+def motor_forward(delay, steps):
+    for i in range(0, steps):
+        setStep(1, 0, 0, 0)
+        utime.sleep_ms(delay)
+        setStep(0, 1, 0, 0)
+        utime.sleep_ms(delay)
+        setStep(0, 0, 1, 0)
+        utime.sleep_ms(delay)
+        setStep(0, 0, 0, 1)
+        utime.sleep_ms(delay)
+        
+    return
+
+def motor_backward(delay, steps):
+    for i in range(0, steps):
+        setStep(0, 0, 0, 1)
+        utime.sleep_ms(delay)
+        setStep(0, 0, 1, 0)
+        utime.sleep_ms(delay)
+        setStep(0, 1, 0, 0)
+        utime.sleep_ms(delay)
+        setStep(1, 0, 0, 0)
+        utime.sleep_ms(delay)
+        
+    return
+def motor_stop():
+    setStep(0, 0, 0, 0)
+    
+    return
 
 while True:
     wlan = udp.maintain_wifi(wlan)
@@ -37,4 +86,15 @@ while True:
     print("adc data: ", adc_data)
     packet = udp.pack_data(adc_data, time_sent)
     udp.send_data(packet)
-    utime.sleep_ms(10)
+    
+    # use counter to make sure motor does not overextend
+    if (adc_data > 690000 and motor_count < 25):
+        motor_forward(2, 10)
+        motor_count += 1
+        print("motor forward")
+    elif (motor_count > 0):
+        motor_backward(2, 10)
+        motor_count -= 1
+        print("motor backwards")
+    
+#     utime.sleep_ms(10)
