@@ -2,7 +2,7 @@
 # 10/17/2026
 #
 # Acquires data from MyoWear 2.0 EMG device through an ADC
-# and activates stepper motor based on reading
+# and uses stepper motor to assist in hand movement.
 
 import machine
 import utime
@@ -25,7 +25,8 @@ in1 = machine.Pin(13, machine.Pin.OUT, value=0)
 in2 = machine.Pin(12, machine.Pin.OUT, value=0)
 in3 = machine.Pin(11, machine.Pin.OUT, value=0)
 in4 = machine.Pin(10, machine.Pin.OUT, value=0)
-stop_button = machine.Pin(15, machine.Pin.IN)
+forward_button = machine.Pin(15, machine.Pin.IN, pull=machine.Pin.PULL_UP)
+backward_button = machine.Pin(14, machine.Pin.IN, pull=machine.Pin.PULL_UP)
 
 # setup UDP
 tx_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -39,6 +40,7 @@ wlan = udp.connect_wifi()
 spi0 = machine.SPI(0, sck=2, mosi=3, miso=4, phase=1, polarity=0)
 adc = ADS1256(spi0, cs, drdy)
 motor_count = 0
+count = 0
 
 def setStep(w1, w2, w3, w4):
     in1.value(w1)
@@ -73,28 +75,34 @@ def motor_backward(delay, steps):
         utime.sleep_ms(delay)
         
     return
+
 def motor_stop():
     setStep(0, 0, 0, 0)
     
     return
 
 while True:
-    wlan = udp.maintain_wifi(wlan)
-    
+#     wlan = udp.maintain_wifi(wlan)
+#     
     adc_data = adc.read(0)
-    time_sent = utime.ticks_ms()
+#     time_sent = utime.ticks_ms()
     print("adc data: ", adc_data)
-    packet = udp.pack_data(adc_data, time_sent)
-    udp.send_data(packet)
+#     packet = udp.pack_data(adc_data, time_sent)
+#     udp.send_data(packet)
     
+    if (forward_button.value() == 0):
+        motor_forward(2, 1)
+    elif (backward_button.value() == 0):
+        motor_backward(2, 1)
     # use counter to make sure motor does not overextend
-    if (adc_data > 690000 and motor_count < 25):
+    elif (adc_data > 690000 and motor_count < 100):
         motor_forward(2, 10)
         motor_count += 1
-        print("motor forward")
     elif (motor_count > 0):
         motor_backward(2, 10)
         motor_count -= 1
-        print("motor backwards")
     
-#     utime.sleep_ms(10)
+    count += 1
+#     if (count % 1000 == 0):
+#         print(adc_data)c
+    utime.sleep_ms(10)
