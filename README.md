@@ -3,8 +3,8 @@
 ### EMG-Controlled Assistive Device
 
 ### Demo
-[![Watch the video](https://img.youtube.com/vi/e6-fv6-x0gE/hqdefault.jpg)](https://www.youtube.com/watch?v=e6-fv6-x0gE)
 
+[![Watch the video](https://img.youtube.com/vi/SXFi_Bxvxfk/hqdefault.jpg)](https://www.youtube.com/watch?v=SXFi_Bxvxfk)
 
 This device uses a MyoWear 2.0 EMG device to send analog data through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using fishing line when the muscle is contracted.
 
@@ -33,4 +33,17 @@ Removed Y-axis scaling on real-time graph for better response time. Sensor uses 
 ### 12:00
 
 Implemented motor control logic based on sensor readings from ADC.
+
+[![Watch the video](https://img.youtube.com/vi/e6-fv6-x0gE/hqdefault.jpg)](https://www.youtube.com/watch?v=e6-fv6-x0gE)
+
+## 10/18/2026
+
+### 8:00
+
+Used fishing line to pull finger straight. Must find way to attach motor to arm. Options: rubber bands, scrunchie, duct dape. Prevent fishing line from slipping off motor. Eventually 3D print custom fitted housing for motor attached to forearm.
+
+### 10:00
+Attached motor to wrist with zipties and a scrunchie. Replaced fishing line with rubber bands attached to wire looped through glove as movement mechanism. Added forward and backward buttons as safety mechanism to override sensor data.
+
+[![Watch the video](https://img.youtube.com/vi/SXFi_Bxvxfk/hqdefault.jpg)](https://www.youtube.com/watch?v=SXFi_Bxvxfk)
 
