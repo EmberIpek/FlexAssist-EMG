@@ -20,7 +20,7 @@ Initial ADC data acquired. Send to PC and graph.
 
 Passing deque into np.arange requires converting into np array first. Added time_sent to packing function on client side to calculate t axis on graph.
 
-[(https://img.youtube.com/vi/w6XfoWX4p8k/hqdefault.jpg)](https://www.youtube.com/watch?v=w6XfoWX4p8k)
+[!(https://img.youtube.com/vi/w6XfoWX4p8k/hqdefault.jpg)](https://www.youtube.com/watch?v=w6XfoWX4p8k)
 
 ### 7:00
 
