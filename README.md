@@ -1,6 +1,6 @@
 # Technica 2026
 
-### EMG-Controlled Assistive Device
+### EMG-Controlled Hand Flexion Assistive Device
 
 ### Demo
 
