@@ -24,16 +24,16 @@ Having a friend with Duchenne muscular dystrophy (DMD) opened my eyes to the cha
 ## What it does
 FlexAssist uses electromyography (EMG) to detect muscle activity and trigger a motorized mechanism that assists with finger extension. The goal is to explore how a user's muscle signals can be translated into mechanical assistance for everyday tasks.
 
-## How we built it
+## How it was built
 A MyoWare 2.0 EMG sensor captures muscle activity and provides an analog signal to a 24-bit ADC. The acquired samples are transmitted to a computer for real-time visualization. When muscle activation is detected, the system controls a stepper motor through a motor driver. The motor pulls a rubber band connected to a glove, assisting finger extension.
 
-## Challenges we ran into
+## Challenges
 Obtaining a usable EMG signal required trial and error with electrode placement. I also had to work around the limitations of available materials to mount the motor near the wrist and develop a mechanism that could pull the fingers toward extension.
 
-## Accomplishments that we're proud of
+## Accomplishments
 I successfully integrated muscle sensing, analog-to-digital conversion, wireless data transmission, real-time signal visualization, and motor control into one working prototype. Seeing muscle activity appear on the live graph and using that signal to trigger a physical motor response was satisfying.
 
-## What we learned
+## What I learned
 I gained hands-on experience with EMG sensing, electrode placement, analog signal acquisition, ADC integration, wireless communication, and motor control. I also learned how much sensor placement and mechanical design affects the performance of an EMG device.
 
 ## What's next for FlexAssist EMG
