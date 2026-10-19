@@ -1,4 +1,4 @@
-# Technica 2026
+# Technica 2026 - Hackathon Winner
 
 ### EMG-Controlled Hand Flexion Assistive Device
 
@@ -6,7 +6,7 @@
 
 [![Watch the video](https://img.youtube.com/vi/SXFi_Bxvxfk/hqdefault.jpg)](https://www.youtube.com/watch?v=SXFi_Bxvxfk)
 
-This device uses a MyoWear 2.0 EMG device to send analog data through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using rubber bands attached to a glove when the muscle is contracted.
+This device uses a MyoWear 2.0 EMG device to send analog data to a Pi Pico through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using rubber bands attached to a glove when the muscle is contracted.
 
 ### Circuit Diagram
 
@@ -17,6 +17,27 @@ Available at: [https://www.circuitlab.com/editor/#?id=nvnkb6n5dq7z]
 #### Dependencies & Credits - This project utilizes the following open-source libraries: 
 
 **ADS1256 Driver**: Written by [robert-hh](https://github.com/robert-hh/ADS1256-ADS1255).
+
+## Inspiration
+Having a friend with Duchenne muscular dystrophy (DMD) opened my eyes to the challenges that come with progressive muscle weakness. Even simple actions such as scratching an itch becomes difficult as muscle function declines. I wanted to explore how embedded systems and biosignal sensing could help restore usable function in limbs.
+
+## What it does
+FlexAssist uses electromyography (EMG) to detect muscle activity and trigger a motorized mechanism that assists with finger extension. The goal is to explore how a user's muscle signals can be translated into mechanical assistance for everyday tasks.
+
+## How we built it
+A MyoWare 2.0 EMG sensor captures muscle activity and provides an analog signal to a 24-bit ADC. The acquired samples are transmitted to a computer for real-time visualization. When muscle activation is detected, the system controls a stepper motor through a motor driver. The motor pulls a rubber band connected to a glove, assisting finger extension.
+
+## Challenges we ran into
+Obtaining a usable EMG signal required trial and error with electrode placement. I also had to work around the limitations of available materials to mount the motor near the wrist and develop a mechanism that could pull the fingers toward extension.
+
+## Accomplishments that we're proud of
+I successfully integrated muscle sensing, analog-to-digital conversion, wireless data transmission, real-time signal visualization, and motor control into one working prototype. Seeing muscle activity appear on the live graph and using that signal to trigger a physical motor response was satisfying.
+
+## What we learned
+I gained hands-on experience with EMG sensing, electrode placement, analog signal acquisition, ADC integration, wireless communication, and motor control. I also learned how much sensor placement and mechanical design affects the performance of an EMG device.
+
+## What's next for FlexAssist EMG
+I plan to 3D-print a dedicated motor housing and improve the mechanism that secures the rubber bands. I also plan to apply digital signal processing techniques to filter noise and extract more useful information from the EMG signal, with the goal of making motor activation more reliable and responsive.
 
 ### 4:45
 
