@@ -8,6 +8,8 @@
 
 This device uses a MyoWear 2.0 EMG device to send analog data to a Pi Pico through an ADC and detect finger extension. A stepper motor assists the user in extending fingers using rubber bands attached to a glove when the muscle is contracted.
 
+Devpost: [https://devpost.com/software/flexassist-emg]
+
 ### Circuit Diagram
 
 <img width="975" height="673" alt="image" src="https://github.com/user-attachments/assets/3aa404a8-60b1-485a-8cfb-6ba70923affb" />
